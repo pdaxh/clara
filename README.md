@@ -46,12 +46,34 @@ uv venv
 uv sync
 ```
 
+## 🚀 Quick Start
+
+1. **Clone and install:**
+```bash
+git clone <repository-url>
+cd study-buddy-ai
+uv venv
+uv sync
+```
+
+2. **Set up environment:**
+```bash
+# Create .env file with your OpenAI API key
+echo "OPENAI_API_KEY=your-api-key-here" > .env
+```
+
+3. **Run the Study Buddy:**
+```bash
+uv run adk web .
+```
+
 ## 🚀 Usage
 
-### Running the Main Tutor Agent
+### Running the Study Buddy AI
 
 ```bash
-uv run python agent.py
+# Start the web interface
+uv run adk web .
 ```
 
 ### Using Individual Agents
@@ -59,28 +81,31 @@ uv run python agent.py
 ```bash
 # Import and use specific agents in Python
 from agents.studyplan_agent import studyplan_agent
-from agent import root_agent
+from agents.agent import StudyBuddyAgent
 ```
 
 ## 📁 Project Structure
 
 ```
 study-buddy-ai/
-├── agent.py                          # Main root tutor agent
+├── __init__.py                       # Package entry point
 ├── agents/                           # Specialized agent modules  
-│   └── studyplan_agent.py           # Subject research & study planning
+│   ├── agent.py                     # Main Study Buddy AI agent
+│   └── studyplan_agent.py          # Subject research & study planning
 ├── tools/                           # Reusable tool functions
 │   ├── __init__.py                  # Package initialization
 │   └── studyplan_agent_tools.py     # Study plan creation tools
+├── study_buddy/                     # Additional modules (future expansion)
 ├── pyproject.toml                   # UV project configuration
-├── .gitignore                       # Git ignore patterns
+├── .env                            # Environment variables (create this)
+├── .gitignore                      # Git ignore patterns
 ├── .venv/                          # Virtual environment (auto-created)
 └── README.md                       # This documentation
 ```
 
 ### 🔧 Agent Architecture
 
-- **Root Agent** (`agent.py`): Main tutor that orchestrates the learning process
+- **Study Buddy Agent** (`agents/agent.py`): Main tutor that orchestrates the learning process
 - **StudyPlan Agent** (`agents/studyplan_agent.py`): Researches subjects and creates structured learning plans
 - **Tools** (`tools/`): Shared functionality used by multiple agents
 
@@ -107,13 +132,16 @@ uv run black .
 uv run isort .
 
 # Type checking  
-uv run mypy agent.py
+uv run mypy agents/
 
 # Linting
 uv run flake8 .
 
 # Run tests
 uv run pytest
+
+# Start the agent web interface
+uv run adk web .
 ```
 
 ### Adding New Tools
@@ -135,6 +163,9 @@ uv run pytest
 Create a `.env` file in the project root for configuration:
 
 ```bash
+# OpenAI Configuration (required)
+OPENAI_API_KEY=your-openai-api-key
+
 # Google ADK Configuration (if needed)
 GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account.json
 GOOGLE_CLOUD_PROJECT=your-project-id
@@ -147,9 +178,11 @@ LOG_LEVEL=INFO
 ### Agent Configuration
 
 Agents are configured in their respective files:
-- Model selection (e.g., `gemini-2.0-flash-exp`)
+- Model selection (using OpenAI GPT-4o-mini via LiteLLM)
 - System instructions and behavior
 - Tool assignments
+
+The agents use LiteLLM to interface with OpenAI's API, requiring an `OPENAI_API_KEY` in your `.env` file.
 
 ## 🎓 Educational Methodology
 
