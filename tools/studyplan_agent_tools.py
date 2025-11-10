@@ -76,7 +76,7 @@ def divide_into_study_sections(
     # Create logical study sections that build on each other
     study_sections = []
     
-    for i, (topic, difficulty) in enumerate(zip(key_topics, difficulty_progression, strict=True), 1):
+    for i, (topic, difficulty) in enumerate(zip(key_topics, difficulty_progression), 1):
         section = {
             "section_number": i,
             "section_title": topic,
