@@ -9,7 +9,9 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "google-adk",
+    "litellm",
     "python-dotenv",
+    "python-multipart",
 ]
 
 [project.optional-dependencies]

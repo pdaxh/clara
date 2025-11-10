@@ -40,16 +40,9 @@ git clone <repository-url>
 cd study-buddy-ai
 ```
 
-2. Create and activate virtual environment:
+2. Create virtual environment and install dependencies:
 ```bash
 uv venv
-source .venv/bin/activate  # On macOS/Linux
-```
-
-3. Install dependencies:
-```bash
-uv add google-adk python-dotenv
-uv add --dev pytest black isort flake8 mypy
 uv sync
 ```
 
