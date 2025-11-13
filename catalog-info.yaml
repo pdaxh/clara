@@ -1,0 +1,107 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: clara
+  title: Clara
+  description: A systematic AI tutor built using Google Agent Development Kit (ADK) that helps students master their exam subjects through structured learning and assessment
+  tags:
+    - python
+    - ai
+    - adk
+    - education
+    - tutoring
+    - kubernetes
+    - gitops
+  annotations:
+    backstage.io/managed-by-location: file:./catalog-info.yaml
+    backstage.io/source-location: url:https://github.com/pdaxh/clara
+    github.com/project-slug: pdaxh/clara
+    argoproj.io/instance: clara
+spec:
+  type: service
+  lifecycle: production
+  owner: user:default/user
+  system: ulp-platform
+  providesApis:
+    - clara-api
+  links:
+    - url: https://github.com/pdaxh/clara
+      title: Source Code
+      icon: github
+      type: sourcecode
+    - url: https://github.com/pdaxh/clara/issues
+      title: Issues
+      icon: bug
+      type: issue-tracker
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: clara-api
+  title: Clara API
+  description: API endpoints for the Clara AI tutoring service
+  tags:
+    - python
+    - ai
+    - adk
+    - education
+  annotations:
+    backstage.io/managed-by-location: file:./catalog-info.yaml
+spec:
+  type: openapi
+  lifecycle: production
+  owner: user:default/user
+  system: ulp-platform
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Clara API
+      version: 1.0.0
+      description: API for the Clara AI tutoring system built with Google ADK
+      contact:
+        name: ULP Platform Team
+    servers:
+      - url: http://clara:6060
+        description: Kubernetes service (internal)
+      - url: http://localhost:6060
+        description: Local development server
+    paths:
+      /health:
+        get:
+          summary: Health check endpoint
+          description: Lightweight health check endpoint for Kubernetes probes
+          operationId: getHealth
+          tags:
+            - Health
+          responses:
+            '200':
+              description: Service is healthy
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: "healthy"
+      /api/agents:
+        get:
+          summary: List available agents
+          description: Returns list of available AI tutoring agents
+          operationId: listAgents
+          tags:
+            - Agents
+          responses:
+            '200':
+              description: List of agents
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      agents:
+                        type: array
+                        items:
+                          type: string
+                        example: ["StudyBuddyAgent", "StudyPlanAgent"]
+

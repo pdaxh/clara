@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clara
+  labels:
+    app: clara
+    app.kubernetes.io/name: clara
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clara
+  template:
+    metadata:
+      labels:
+        app: clara
+        app.kubernetes.io/name: clara
+        app.kubernetes.io/component: backend
+    spec:
+      containers:
+      - name: clara
+        image: ghcr.io/pdaxh/clara:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 6060
+          protocol: TCP
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: clara-secrets
+              key: openai-api-key
+        - name: GOOGLE_CLOUD_PROJECT
+          valueFrom:
+            configMapKeyRef:
+              name: clara-config
+              key: google-cloud-project
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: clara-config
+              key: log-level
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 6060
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 6060
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - ALL
+
