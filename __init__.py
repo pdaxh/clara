@@ -1,11 +1,11 @@
 """
-Study Buddy AI
+Clara
 
-A helpful AI agent for students built with Google ADK.
+A systematic AI tutor for students built with Google ADK.
 """
 
-__version__ = "0.1.0"
-__author__ = "Elijah"
+__version__ = "0.1.1"
+__author__ = "Daniel"
 
 from .agents.agent import StudyBuddyAgent
 

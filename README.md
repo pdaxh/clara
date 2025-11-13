@@ -1,10 +1,10 @@
-# Study Buddy AI
+# Clara
 
 A systematic AI tutor built using Google Agent Development Kit (ADK) that helps students master their exam subjects through structured learning and assessment.
 
 ## 🎯 How It Works
 
-The Study Buddy AI follows a proven educational methodology:
+Clara follows a proven educational methodology:
 
 1. **Get to Know Student**: Collects grade level, subject, and learning goals
 2. **Research Subject**: Analyzes curriculum and identifies key concepts  
@@ -37,7 +37,7 @@ The Study Buddy AI follows a proven educational methodology:
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd study-buddy-ai
+cd clara
 ```
 
 2. Create virtual environment and install dependencies:
@@ -51,7 +51,7 @@ uv sync
 1. **Clone and install:**
 ```bash
 git clone <repository-url>
-cd study-buddy-ai
+cd clara
 uv venv
 uv sync
 ```
@@ -62,18 +62,18 @@ uv sync
 echo "OPENAI_API_KEY=your-api-key-here" > .env
 ```
 
-3. **Run the Study Buddy:**
+3. **Run Clara:**
 ```bash
-uv run adk web .
+uv run adk web . --host 0.0.0.0 --port 6060
 ```
 
 ## 🚀 Usage
 
-### Running the Study Buddy AI
+### Running Clara
 
 ```bash
 # Start the web interface
-uv run adk web .
+uv run adk web . --host 0.0.0.0 --port 6060
 ```
 
 ### Using Individual Agents
@@ -87,10 +87,10 @@ from agents.agent import StudyBuddyAgent
 ## 📁 Project Structure
 
 ```
-study-buddy-ai/
+clara/
 ├── __init__.py                       # Package entry point
 ├── agents/                           # Specialized agent modules  
-│   ├── agent.py                     # Main Study Buddy AI agent
+│   ├── agent.py                     # Main Clara AI agent
 │   └── studyplan_agent.py          # Subject research & study planning
 ├── tools/                           # Reusable tool functions
 │   ├── __init__.py                  # Package initialization
@@ -105,7 +105,7 @@ study-buddy-ai/
 
 ### 🔧 Agent Architecture
 
-- **Study Buddy Agent** (`agents/agent.py`): Main tutor that orchestrates the learning process
+- **Clara Agent** (`agents/agent.py`): Main tutor that orchestrates the learning process
 - **StudyPlan Agent** (`agents/studyplan_agent.py`): Researches subjects and creates structured learning plans
 - **Tools** (`tools/`): Shared functionality used by multiple agents
 
@@ -186,7 +186,7 @@ The agents use LiteLLM to interface with OpenAI's API, requiring an `OPENAI_API_
 
 ## 🎓 Educational Methodology
 
-The Study Buddy AI implements proven educational principles:
+Clara implements proven educational principles:
 
 - **Mastery Learning**: Students must demonstrate understanding before advancing
 - **Scaffolded Learning**: Complex topics broken into manageable chunks  

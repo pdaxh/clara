@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for Study Buddy AI
+# Multi-stage Dockerfile for Clara
 # Stage 1: Build dependencies
 FROM python:3.11-slim as builder
 

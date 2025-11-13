@@ -1,9 +1,9 @@
 [project]
-name = "study-buddy-ai"
+name = "clara"
 version = "0.1.0"
-description = "A study buddy AI agent for students using Google ADK"
+description = "Clara - A systematic AI tutor for students using Google ADK"
 authors = [
-    {name = "Elijah", email = "your-email@example.com"}
+    {name = "Daniel", email = "your-email@example.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.9"
