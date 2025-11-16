@@ -27,11 +27,11 @@ spec:
           containerPort: 6060
           protocol: TCP
         env:
-        - name: OPENAI_API_KEY
+        - name: GOOGLE_API_KEY
           valueFrom:
             secretKeyRef:
               name: clara-secrets
-              key: openai-api-key
+              key: google-api-key
         - name: GOOGLE_CLOUD_PROJECT
           valueFrom:
             configMapKeyRef:
