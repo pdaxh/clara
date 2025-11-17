@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from tools import quick_subject_research, divide_into_study_sections
 
 studyplan_agent = Agent(
-    model='gemini-2.0-flash-exp',
+    model='gemini-1.5-flash',
     name='studyplan_agent',
     description="Researches academic subjects and creates structured study plans with sequential learning sections.",
     instruction="""You are a study plan creation agent. Your role is to:
