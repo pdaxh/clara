@@ -1,7 +1,4 @@
-# Study Buddy AI - .gitignore
-
-# Agents folder (as requested)
-agents/
+# Clara - .gitignore
 
 # Python
 __pycache__/
