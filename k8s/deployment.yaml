@@ -42,6 +42,11 @@ spec:
             configMapKeyRef:
               name: clara-config
               key: log-level
+        - name: CLARA_LANGUAGE
+          valueFrom:
+            configMapKeyRef:
+              name: clara-config
+              key: language
         resources:
           requests:
             memory: "256Mi"

@@ -8,4 +8,7 @@ data:
   google-cloud-project: ""
   log-level: "INFO"
   debug: "false"
+  # Language setting: 'en' for English, 'sv' for Swedish
+  # Default: 'en'
+  language: "en"
 
