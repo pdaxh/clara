@@ -28,10 +28,7 @@ spec:
           protocol: TCP
         env:
         - name: GOOGLE_API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: clara-secrets
-              key: google-api-key
+          value: "AIzaSyB8wy9nDQ3jCRYOhz8oFN6tx5j-0n1NlIo"
         - name: GOOGLE_CLOUD_PROJECT
           valueFrom:
             configMapKeyRef:
