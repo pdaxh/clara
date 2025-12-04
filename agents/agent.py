@@ -68,7 +68,7 @@ description = DESCRIPTIONS.get(LANGUAGE, DESCRIPTIONS['en'])
 # Main Clara agent - orchestrates the full learning experience
 # This is the root_agent that ADK will discover and use
 root_agent = Agent(
-    model='gemini-1.5-flash',
+    model='gemini-2.5-flass',
     name='clara',
     description=description,
     instruction=instruction,
