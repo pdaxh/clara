@@ -65,13 +65,21 @@ DESCRIPTIONS = {
 instruction = INSTRUCTIONS.get(LANGUAGE, INSTRUCTIONS['en'])
 description = DESCRIPTIONS.get(LANGUAGE, DESCRIPTIONS['en'])
 
-# Main Clara agent - orchestrates the full learning experience
-# This is the root_agent that ADK will discover and use
-root_agent = Agent(
-    model='gemini-2.5-flass',
-    name='clara',
-    description=description,
-    instruction=instruction,
-    tools=[quick_subject_research, divide_into_study_sections],
-)
+def app():
+    """
+    Main Clara agent function.
+    
+    This is the entry point that ADK will discover and use.
+    Returns the configured Clara agent.
+    """
+    return Agent(
+        model='gemini-2.5-flass',
+        name='clara',
+        description=description,
+        instruction=instruction,
+        tools=[quick_subject_research, divide_into_study_sections],
+    )
+
+# Maintain backward compatibility
+root_agent = app()
 
