@@ -73,7 +73,7 @@ def app():
     Returns the configured Clara agent.
     """
     return Agent(
-        model='gemini-2.5-flass',
+        model='openai/gpt-4o-mini',
         name='clara',
         description=description,
         instruction=instruction,
