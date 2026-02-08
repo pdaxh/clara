@@ -5,13 +5,14 @@ Researches subjects and creates structured study plans for students.
 """
 
 from google.adk.agents.llm_agent import Agent
+from google.adk.models.lite_llm import LiteLlm
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from tools import quick_subject_research, divide_into_study_sections
 
 studyplan_agent = Agent(
-    model='openai/gpt-4o-mini',
+    model=LiteLlm(model="openai/gpt-4o-mini"),
     name='studyplan_agent',
     description="Researches academic subjects and creates structured study plans with sequential learning sections.",
     instruction="""You are a study plan creation agent. Your role is to:

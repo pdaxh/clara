@@ -6,6 +6,7 @@ Supports multiple languages (English, Swedish, etc.)
 """
 
 from google.adk.agents.llm_agent import Agent
+from google.adk.models.lite_llm import LiteLlm
 import sys
 import os
 from pathlib import Path
@@ -73,7 +74,7 @@ def app():
     Returns the configured Clara agent.
     """
     return Agent(
-        model='openai/gpt-4o-mini',
+        model=LiteLlm(model="openai/gpt-4o-mini"),
         name='clara',
         description=description,
         instruction=instruction,
